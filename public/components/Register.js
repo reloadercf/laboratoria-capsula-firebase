@@ -26,7 +26,13 @@ export default props => {
         console.log('sirve el form',e.target)
         let mail=e.target.email.value
         let pass=e.target.password.value
-        registerUser(mail,pass)
+        registerUser(mail,pass).then( function() {
+            let h2= document.createElement('h2')
+            h2.innerText="Bienvenida"
+            document.body.appendChild(h2)
+            div.remove()
+        })
+        
     }
 
 }

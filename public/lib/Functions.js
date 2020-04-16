@@ -1,3 +1,6 @@
+let db = firebase.firestore()
+let usersRef = db.collection('users')
+
 export function loginWithGoogle() {
     let provider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(provider)
@@ -31,6 +34,7 @@ export function registerUser(email, password){
     .then(function(snap){
         console.log(snap)
         let mail=snap.user.email
+        localStorage.user = JSON.stringify(mail)
         alert(`${mail} se registro correctamente`)
         return snap.user
     }).catch(function(error) {

@@ -25,7 +25,13 @@ export default props => {
     $('#login-form').onsubmit = e => {
         e.preventDefault()
         loginWithGoogle()
-            .then(user => console.log(user))
+            .then(user => {
+                console.log(user)
+                let h2= document.createElement('h2')
+                h2.innerText="Bienvenida"
+                document.body.appendChild(h2)
+                div.remove()
+            })
     }
     $('#back').onclick = () => props.navigate('/')
     return div

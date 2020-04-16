@@ -6,19 +6,23 @@ function navigate(path) {
     render(path)
 }
 
-
-// main 
-function render(path) {
-    let route
-    switch (path) {
-        case '/login':
-            login({ document, navigate })
-            break;
-        default:
-            route = register({ document, navigate })
-            break;
+if (localStorage.getItem("user") === null) {
+    function render(path) {
+        let route
+        switch (path) {
+            case '/login':
+                login({ document, navigate })
+                break;
+            default:
+                route = register({ document, navigate })
+                break;
+        }
     }
-    //root.appendChild(route)
+    
+    render()
+}else{
+    let h2= document.createElement('h2')
+                h2.innerText="Bienvenida"
+                document.body.appendChild(h2)
 }
 
-render()
